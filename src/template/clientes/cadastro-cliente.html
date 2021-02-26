@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-12">
+
+        <div class="card ">
+            <div class="card-header">
+                Cliente
+            </div>
+            <form name="cf" id="form-contato" ng-controller="ClientesController as cfCtrl" ng-submit="cf.$valid && onSalvar(cliente)" novalidate>
+                <div class="card-body">
+                    <div class="alert alert-success alert-dismissible feedback-message" role="alert" ng-show="alert_success">
+                        Recebemos os seus dados. <strong>Obrigado!</strong>
+                    </div>
+                    <div class="alert alert-danger alert-dismissible feedback-message" role="alert" ng-show="alert_danger">
+                        Ops, algo deu errado. <strong>Tente novamente!</strong>
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'has-error' : (cf.$submitted || cf.nome.$touched) && cf.nome.$error.required}">Nome:</label>
+                        <input type="text" name="nome" class="form-control" ng-model="cliente.nome" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'has-error' : (cf.$submitted || cf.endereco.$touched) && cf.endereco.$error.required}">Endereço:</label>
+                        <input type="text" name="endereco" class="form-control" ng-model="cliente.endereco" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label  ng-class="{'has-error' : (cf.$submitted || cf.email.$touched) && (cf.email.$error.required || cf.email.$error.email)}">E-mail:</label>
+                        <input type="email" name="email" class="form-control" ng-model="cliente.email" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'has-error' : (cf.$submitted || cf.telefone.$touched) && cf.telefone.$error.required}">Telefone:</label>
+                        <input type="text" name="telefone" class="form-control" ng-model="cliente.telefone" required="required">
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <button href="" class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Salvar</button>
+                    <a href="" class="btn btn-primary" ui-sref="clientes"><i class="fa fa-black-tie"></i> Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

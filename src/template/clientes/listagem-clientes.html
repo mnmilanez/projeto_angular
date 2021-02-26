@@ -1,0 +1,43 @@
+<div class="container-fluid mt-1">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <a class="navbar-brand">Clientes</a>
+                <a class="btn btn-outline-success my-2 my-sm-0" ui-sref="cliente"><i class="fa fa-plus"></i> Novo Cliente</a>
+            </nav>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Endereço</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col" class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="clientes.length == 0">
+                        <td colspan="6" class="text-center"> Sem dados </td>
+
+                    </tr>
+                    <tr ng-repeat="cliente in clientes">
+                        <td> {{cliente.id}}</td>
+                        <td>{{cliente.nome}}</td>
+                        <td>{{cliente.endereco}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.telefone}}</td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-warning btn-sm" ui-sref="editCliente({id : cliente.id})"> <i class="fa fa-pencil"></i></a>
+                            <a href="" class="btn btn-danger btn-sm" ng-click="onDelete(cliente.id)"> <i class="fa fa-remove"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

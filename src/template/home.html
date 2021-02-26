@@ -1,0 +1,47 @@
+<div class="container-fluid mt-1">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <a class="navbar-brand">Ordem de Serviços</a>
+                <a class="btn btn-outline-success my-2 my-sm-0" ui-sref="ordem-servico"><i class="fa fa-plus"></i> Nova OS</a>
+            </nav>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Tipo de Equipamento</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Entrada</th>
+                    <th scope="col">Data Resolução</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ordemServico in ordemServicos">
+                        <th scope="row">{{ordemServico.id}}</th>
+                        <td>{{ordemServico.cliente_id}}</td>
+                        <td>{{ordemServico.tipo_equipamento}}</td>
+                        <td>{{ordemServico.marca}}</td>
+                        <td>{{ordemServico.data | date:'dd/MM/yyyy'}}</td>
+                        <td>{{ordemServico.data_resolucao | date:'dd/MM/yyyy'}}</td>
+                        <td class="text-center">
+                            <span class="badge  badge-danger" ng-show="ordemServico.status == 'A'">Aberto</span>
+                            <span class="badge  badge-warning" ng-show="ordemServico.status == 'M'">Em manutenção</span>
+                            <span class="badge  badge-success" ng-show="ordemServico.status == 'F'">Finalizado</span>
+                        </td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-warning btn-sm" ui-sref="editOrdemServico({id : ordemServico.id})"> <i class="fa fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

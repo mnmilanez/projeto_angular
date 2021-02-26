@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-12">
+
+        <div class="card ">
+            <div class="card-header">
+                Ordem de Servico
+            </div>
+            <form name="cf" id="form-contato" ng-controller="OrdemServicosController as cfCtrl" ng-submit="cf.$valid && onSalvar(ordemServico)" novalidate>
+                <div class="card-body">
+                    <div class="alert alert-success alert-dismissible feedback-message" role="alert" ng-show="alert_success">
+                        Recebemos os seus dados. <strong>Obrigado!</strong>
+                    </div>
+                    <div class="alert alert-danger alert-dismissible feedback-message" role="alert" ng-show="alert_danger">
+                        Ops, algo deu errado. <strong>Tente novamente!</strong>
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'has-error' : (cf.$submitted || cf.cliente.$touched) && cf.cliente.$error.required}">Cliente:</label>
+                        <select name="cliente" class="form-control" ng-model="ordemServico.cliente_id" required="required">
+                            <option value="">Selecione</option>
+                            <option ng-repeat="cliente in clientes" value="{{cliente.id}}" ng-selected="cliente.id == ordemServico.cliente_id">{{cliente.nome}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'has-error' : (cf.$submitted || cf.tipo.$touched) && cf.tipo.$error.required}">Tipo de Equipamento:</label>
+                        <input type="text" name="tipo" class="form-control" ng-model="ordemServico.tipo_equipamento" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'has-error' : (cf.$submitted || cf.marca.$touched) && cf.marca.$error.required}">Marca do equipamento:</label>
+                        <input type="text" name="marca" class="form-control" ng-model="ordemServico.marca" required="required">
+                    </div>
+                    <div class="form-group" ng-show="ordemServico.id !== undefined">
+                        <label >Data Resolução:</label>
+                        <input type="date" name="data_resolucao" class="form-control" ng-model="ordemServico.data_resolucao" >
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'has-error' : (cf.$submitted || cf.descricao.$touched) && cf.descricao.$error.required}">Descrição do Problema:</label>
+                        <textarea type="text" name="descricao" class="form-control" ng-model="ordemServico.descricao" required="required" rows="6"></textarea>
+                    </div>
+
+                    <div class="form-group" ng-show="ordemServico.id !== undefined">
+                        <label >Status:</label>
+                        <select name="status" class="form-control" ng-model="ordemServico.status">
+                            <option value="A">Aberto</option>
+                            <option value="M">Em Manutenção</option>
+                            <option value="F">Finalizado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <button href="" class="btn btn-primary" type="submit"><i class="fa fa-save"></i> Salvar</button>
+                    <a href="" class="btn btn-primary" ui-sref="home"><i class="fa fa-black-tie"></i> Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
